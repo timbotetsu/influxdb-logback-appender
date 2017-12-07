@@ -1,0 +1,16 @@
+logs
+target
+tmp
+.classpath
+.project
+.settings/
+*.swp
+*~
+.vertx/
+dd
+installer
+jetty
+file-uploads
+releases
+/system.pfx
+config

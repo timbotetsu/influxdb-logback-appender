@@ -12,7 +12,7 @@ public class SimpleTest {
     @Test
     public void singleLog() {
         Logger log = LoggerFactory.getLogger(SimpleTest.class) ;
-        log.debug("test");
+        log.info("test");
         
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
         loggerContext.stop();
