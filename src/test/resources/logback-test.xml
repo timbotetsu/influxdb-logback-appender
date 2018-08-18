@@ -3,37 +3,37 @@
 
 <configuration debug="false">
 
-  <property name="home" value="./"/>
+    <property name="home" value="./"/>
 
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <param name="Target" value="System.out"/>
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>INFO</level>
-    </filter>
-    <encoder>
-      <Pattern>%d %-5p %c{0}:%L - %m%n</Pattern>
-    </encoder>
-  </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <Pattern>%d %-5p %c{0}:%L - %m%n</Pattern>
+        </encoder>
+    </appender>
 
-  <appender name="INFLUX" class="io.github.bckfnn.influxlogback.InfluxDbAppender">
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>INFO</level>
-    </filter>
-    <filter class="io.github.bckfnn.influxlogback.InfluxDbSQLClassFilter">
-      <level>INFO</level>
-      <logger>influx.p6spy.logger</logger>
-      <on>true</on>
-    </filter>
+    <appender name="INFLUX" class="io.github.bckfnn.influxlogback.InfluxDbAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <filter class="io.github.bckfnn.influxlogback.InfluxDbSQLClassFilter">
+            <level>INFO</level>
+            <logger>influx.p6spy.logger</logger>
+            <on>true</on>
+        </filter>
 
-    <url>http://localhost:8086/write?db=logback&amp;precision=u</url>
-    <username>test</username>
-    <password>password</password>
-  </appender>
+        <url>http://localhost:8086/write?db=logback&amp;precision=u</url>
+        <username>test</username>
+        <password>password</password>
+    </appender>
 
 
-  <root level="DEBUG">
-    <appender-ref ref="INFLUX"/>
-  </root>
+    <root level="DEBUG">
+        <appender-ref ref="INFLUX"/>
+    </root>
 
 </configuration>
 

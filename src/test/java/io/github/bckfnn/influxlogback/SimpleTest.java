@@ -9,10 +9,11 @@ public class SimpleTest {
 
     @Test
     public void singleLog() {
-        Logger log = LoggerFactory.getLogger(SimpleTest.class);
+        Logger log = LoggerFactory.getLogger("influx.p6spy.logger");
         log.info("sqllog,category=statement connection_id=1,elapsed=1,sql=\"SELECT NOW()\" 1534494344337000");
 
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
         loggerContext.stop();
     }
+
 }
