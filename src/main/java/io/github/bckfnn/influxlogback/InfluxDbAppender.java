@@ -105,9 +105,6 @@ public class InfluxDbAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
             debug("Sending .. ");
             try {
                 sendData(size);
-                for (int i = 0; i < size; i++) {
-                    queue.remove();
-                }
             } catch (Exception e) {
                 debug("Could not send log to influx: ", e);
                 debug("Will retry in the next interval");
@@ -125,6 +122,7 @@ public class InfluxDbAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
                 Request request = builder.post(RequestBody.create(null, data)).build();
                 client.newCall(request).execute();
             }
+            queue.remove();
             size--;
         }
     }
