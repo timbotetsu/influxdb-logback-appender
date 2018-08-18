@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration>
-<!-- Copyright 2015 [inno:vasion] -->
 
 <configuration debug="false">
 
-  <property name="home" value="./" />
+  <property name="home" value="./"/>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <param name="Target" value="System.out"/>
@@ -16,39 +15,22 @@
     </encoder>
   </appender>
 
-
   <appender name="INFLUX" class="io.github.bckfnn.influxlogback.InfluxDbAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>INFO</level>
     </filter>
-    
-    <url>http://localhost:8086/write?db=logback&amp;precision=u</url>
-    <auth>ethics:password</auth>
-    
-    <measurement>logger</measurement>
-    <tag>
-      <name>level</name>
-      <pattern>%level</pattern>
-    </tag>
-    <field>
-      <name>logger</name>
-      <pattern>%logger</pattern>
-    </field>
-    <field>
-      <name>line</name>
-      <pattern>%line</pattern>
-    </field>
-    <field>
-      <name>msg</name>
-      <pattern>%msg</pattern>
-    </field>
-    <field>
-      <name>exception</name>
-      <pattern>%exception</pattern>
-    </field>
-  </appender>  
+    <filter class="io.github.bckfnn.influxlogback.InfluxDbSQLClassFilter">
+      <level>INFO</level>
+      <logger>influx.p6spy.logger</logger>
+      <on>true</on>
+    </filter>
 
- 
+    <url>http://localhost:8086/write?db=logback&amp;precision=u</url>
+    <username>test</username>
+    <password>password</password>
+  </appender>
+
+
   <root level="DEBUG">
     <appender-ref ref="INFLUX"/>
   </root>

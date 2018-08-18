@@ -1,16 +1,59 @@
-logs
-target
-tmp
-.classpath
-.project
-.settings/
-*.swp
+######################
+# Intellij
+######################
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+out/
+
+######################
+# Visual Studio Code
+######################
+.vscode/
+
+######################
+# Maven
+######################
+/log/
+/target/
+
+######################
+# Package Files
+######################
+*.jar
+*.war
+*.ear
+*.db
+
+######################
+# Windows
+######################
+Thumbs.db
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+.svn
+# Thumbnails
+._*
+.Spotlight-V100
+.Trashes
+
+######################
+# Logs
+######################
+*.log*
+
+######################
+# Others
+######################
+*.class
+*.*~
 *~
-.vertx/
-dd
-installer
-jetty
-file-uploads
-releases
-/system.pfx
-config
+.merge_file*
